@@ -11,8 +11,11 @@ function App() {
 
   return (
     <>
-      <Form />
-      <List />
+      <div className='app-container'>
+        <Form />
+        <List />
+      </div>
+      
     </>
   )
 }
