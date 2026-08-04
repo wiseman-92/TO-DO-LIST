@@ -29,6 +29,10 @@ function App() {
     setFormData({ title: '', description: '', date: '' })
   }
 
+  function handleDelete(id) {
+    setItems(items.filter(item => item.id !== id))
+  }
+
   return (
     <div className='app-container'>
       <Form
@@ -36,7 +40,7 @@ function App() {
         onInputChange={handleInput}
         onSubmit={handleSubmit}
       />
-      <List items={items} />
+      <List items={items} onDelete={handleDelete} />
     </div>
   )
 }

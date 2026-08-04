@@ -1,6 +1,7 @@
-import { TableCell, Table, TableContainer, TableHead, TableRow, TableBody } from '@mui/material'
+import { TableCell, Table, TableContainer, TableHead, TableRow, TableBody, IconButton } from '@mui/material'
+import DeleteIcon from '@mui/icons-material/Delete'
 
-function List({ items }) {
+function List({ items, onDelete }) {
   return (
     <TableContainer>
       <Table>
@@ -10,12 +11,13 @@ function List({ items }) {
             <TableCell>Description</TableCell>
             <TableCell>Due Date</TableCell>
             <TableCell>Status</TableCell>
+            <TableCell>Actions</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {items.length === 0 ? (
             <TableRow>
-              <TableCell colSpan={4} align='center'>
+              <TableCell colSpan={5} align='center'>
                 No items added yet
               </TableCell>
             </TableRow>
@@ -26,6 +28,14 @@ function List({ items }) {
                 <TableCell>{item.description}</TableCell>
                 <TableCell>{item.date}</TableCell>
                 <TableCell>Pending</TableCell>
+                <TableCell>
+                  <IconButton
+                    aria-label='delete'
+                    onClick={() => onDelete(item.id)}
+                  >
+                    <DeleteIcon />
+                  </IconButton>
+                </TableCell>
               </TableRow>
             ))
           )}
