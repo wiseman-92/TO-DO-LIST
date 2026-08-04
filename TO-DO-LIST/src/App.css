@@ -1,5 +1,48 @@
+:root{
+    --background-color: rgb(245, 245, 245);
+    --button-color: rgb(1, 56, 207);
+    --button-text-color:#ffff;
+}
+
 .app-container{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 10px;
+    padding: 10px;
+    width: 500px;
+    background-color: var(--background-color);
+    border: 1px;
+    border-radius: 20px;
+}
+
+.button{
+    width: fit-content;
+    display: block;
+    align-content: center;
+    justify-content: center;
+    background-color: var(--button-color);
+    color: var(--button-text-color);
+    padding: 10px 16px;
+    margin: 10px 0 0;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.inputField{
+    padding: 10px;
+    margin: 10px;
+    border: none;
+    border-radius: 2px;
+}
+.labelText{
+    font-size: 16px;
+    margin: 5px;
 }
