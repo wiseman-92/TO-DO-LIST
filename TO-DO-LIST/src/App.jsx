@@ -3,26 +3,41 @@ import Form from './components/Form'
 import List from './components/List'
 import { useState } from 'react'
 
-//Implemented two components form component and list component
-//Form component will collect the to-do-list item 
-//List component will render the added to-do-list item
-
 function App() {
-  const [formData, setFormData ] = useState({
+  const [formData, setFormData] = useState({
     title: '',
     description: '',
     date: ''
   })
+  const [items, setItems] = useState([])
+
+  function handleInput(event) {
+    setFormData({ ...formData, [event.target.name]: event.target.value })
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault()
+
+    const newItem = {
+      id: Date.now(),
+      title: formData.title,
+      description: formData.description,
+      date: formData.date
+    }
+
+    setItems([...items, newItem])
+    setFormData({ title: '', description: '', date: '' })
+  }
 
   return (
-    <>
-      <div className='app-container'>
-        <Form />
-
-        <List />
-      </div>
-      
-    </>
+    <div className='app-container'>
+      <Form
+        formData={formData}
+        onInputChange={handleInput}
+        onSubmit={handleSubmit}
+      />
+      <List items={items} />
+    </div>
   )
 }
 
